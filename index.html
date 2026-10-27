@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨ Wickivy 💜</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        kawaii: {
+                            bg: '#1e1438',
+                            card: '#291b4e',
+                            border: '#4c3575',
+                            pink: '#f472b6',
+                            purple: '#c084fc',
+                            lavender: '#e9d5ff',
+                            accent: '#db2777',
+                            soft: '#fdf4ff'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #1e1438;
+            color: #fdf4ff;
+            font-family: 'Quicksand', sans-serif;
+            background-image: radial-gradient(circle at 10% 10%, rgba(219, 39, 119, 0.12) 0%, transparent 40%),
+                              radial-gradient(circle at 90% 90%, rgba(192, 132, 252, 0.12) 0%, transparent 40%);
+        }
+        .kawaii-glow {
+            box-shadow: 0 10px 35px rgba(192, 132, 252, 0.2);
+        }
+        .kawaii-glow-hover:hover {
+            transform: translateY(-5px) scale(1.01);
+            box-shadow: 0 15px 40px rgba(244, 114, 182, 0.35);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1e1438;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #4c3575;
+            border-radius: 9999px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #f472b6;
+        }
+    </style>
+</head>
+<body class="min-h-screen p-4 md:p-6 pb-12">
+
+    <!-- Header -->
+    <header class="max-w-7xl mx-auto bg-kawaii-card/95 border-2 border-kawaii-border rounded-3xl p-5 mb-6 flex flex-wrap items-center justify-between gap-4 kawaii-glow backdrop-blur-md">
+        <div class="flex items-center gap-3.5">
+            <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-pink-500 to-purple-400 flex items-center justify-center shadow-lg text-white text-2xl animate-bounce">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+            </div>
+            <div>
+                <h1 class="font-extrabold text-2xl tracking-wide text-white flex items-center gap-2">
+                    Wickivy
+                    <span class="text-xs px-3 py-1 rounded-full bg-pink-500/20 text-pink-300 border border-pink-500/40 font-semibold animate-pulse">✨ Staff & Applications</span>
+                </h1>
+                <p class="text-xs text-kawaii-lavender/80 font-medium">Cozy Discord Realm & Team Directory 🌸</p>
+            </div>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-3 text-xs">
+            <div class="bg-kawaii-bg border border-kawaii-border px-4 py-2.5 rounded-2xl flex items-center gap-2 shadow-inner">
+                <span class="w-3 h-3 rounded-full bg-pink-400 animate-ping"></span>
+                <span class="text-kawaii-lavender font-semibold">Active Staff: <strong class="text-pink-300">4</strong></span>
+            </div>
+            <button onclick="openApplicationModal()" class="bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-400 hover:to-purple-400 text-white font-bold px-5 py-3 rounded-2xl transition duration-300 shadow-lg kawaii-glow-hover flex items-center gap-2">
+                <i class="fa-solid fa-heart text-white animate-pulse"></i> Apply For Role
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content Grid -->
+    <main class="max-w-7xl mx-auto space-y-6">
+        
+        <!-- Top Banners -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+            
+            <!-- Notice Box -->
+            <div class="bg-kawaii-card/85 border-2 border-pink-500/30 rounded-3xl p-5 relative overflow-hidden kawaii-glow">
+                <div class="absolute -right-4 -bottom-4 text-pink-500/10 text-8xl font-black pointer-events-none">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+                <div class="flex items-center justify-between mb-3">
+                    <span class="text-xs font-bold px-3 py-1 rounded-xl bg-pink-500/20 text-pink-300 border border-pink-500/30 flex items-center gap-1.5">
+                        <i class="fa-solid fa-bell text-pink-400"></i> APPLICATIONS OPEN
+                    </span>
+                    <span class="text-xs text-kawaii-lavender/60 font-mono">🌟 JOIN US</span>
+                </div>
+                <h2 class="text-base font-bold text-white mb-1.5 flex items-center gap-2">
+                    Become Part of Wickivy! 🎀
+                </h2>
+                <p class="text-xs text-kawaii-lavender/90 mb-4 leading-relaxed">
+                    We are looking for friendly helpers, trial mods, and event hosts to keep Wickivy cozy, active, and safe!
+                </p>
+                <div class="flex items-center justify-between text-xs pt-3 border-t border-kawaii-border/60">
+                    <span class="text-kawaii-lavender">Target Role: <strong class="text-pink-300">Active Staff / Mod</strong></span>
+                    <button onclick="openApplicationModal()" class="text-pink-400 hover:text-pink-300 font-bold transition flex items-center gap-1">
+                        Apply Now <i class="fa-solid fa-arrow-right-long"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Directive Box -->
+            <div class="bg-kawaii-card/85 border-2 border-kawaii-border rounded-3xl p-5 relative overflow-hidden kawaii-glow">
+                <div class="flex items-center justify-between mb-3">
+                    <span class="text-xs font-bold px-3 py-1 rounded-xl bg-purple-500/20 text-purple-300 border border-purple-500/30 flex items-center gap-1.5">
+                        <i class="fa-solid fa-shield-cat text-purple-400"></i> VIBE CHECK
+                    </span>
+                    <span class="text-xs text-kawaii-lavender/60 font-mono">🌸 POSITIVITY</span>
+                </div>
+                <h2 class="text-base font-bold text-white mb-1.5 flex items-center gap-2">
+                    Kindness First! ✨
+                </h2>
+                <p class="text-xs text-kawaii-lavender/90 mb-4 leading-relaxed">
+                    Zero tolerance for toxicity or drama. Keep conversations warm, welcoming, and magical for every member.
+                </p>
+                <div class="flex items-center justify-between text-xs pt-3 border-t border-kawaii-border/60">
+                    <span class="text-pink-400 font-semibold">💖 Safety Status: Optimal</span>
+                    <a href="#roles-grid" class="text-purple-300 hover:text-white font-bold transition flex items-center gap-1">
+                        View Team <i class="fa-solid fa-arrow-right-long"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Staff Metrics -->
+            <div class="bg-kawaii-card/85 border-2 border-kawaii-border rounded-3xl p-5 relative overflow-hidden kawaii-glow">
+                <div class="flex items-center justify-between mb-3">
+                    <span class="text-xs font-bold px-3 py-1 rounded-xl bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 flex items-center gap-1.5">
+                        <i class="fa-solid fa-chart-pie text-indigo-400"></i> ROSTER STATS
+                    </span>
+                    <span class="text-xs text-kawaii-lavender/60 font-mono">📊 TEAM</span>
+                </div>
+                <div class="grid grid-cols-2 gap-3 my-2">
+                    <div class="bg-kawaii-bg/90 border border-kawaii-border p-3 rounded-2xl">
+                        <span class="text-[11px] text-kawaii-lavender/70 block">Assigned Core</span>
+                        <span class="text-xl font-extrabold text-pink-300">4 Staff</span>
+                    </div>
+                    <div class="bg-kawaii-bg/90 border border-kawaii-border p-3 rounded-2xl">
+                        <span class="text-[11px] text-kawaii-lavender/70 block">Open Slots</span>
+                        <span class="text-xl font-extrabold text-purple-300">Multiple</span>
+                    </div>
+                </div>
+                <div class="flex items-center justify-between text-xs pt-2 text-kawaii-lavender/90">
+                    <span>Server Vibe</span>
+                    <span class="text-pink-300 font-bold">100% Magical 🦄</span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Filter & Search Bar -->
+        <div class="bg-kawaii-card/85 border-2 border-kawaii-border rounded-3xl p-4 flex flex-wrap items-center justify-between gap-4 kawaii-glow">
+            <div class="flex items-center gap-2">
+                <button class="bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold px-4 py-2.5 rounded-2xl text-xs flex items-center gap-2 shadow-md">
+                    <i class="fa-solid fa-users-viewfinder"></i> WICKIVY TEAM DIRECTORY
+                </button>
+            </div>
+            
+            <div class="flex flex-wrap items-center gap-3 w-full md:w-auto">
+                <div class="relative flex-1 md:w-64">
+                    <i class="fa-solid fa-search absolute left-3.5 top-3 text-pink-400 text-xs"></i>
+                    <input type="text" id="searchInput" placeholder="Search staff name or role..." onkeyup="filterStaff()" class="w-full bg-kawaii-bg border border-kawaii-border rounded-2xl pl-10 pr-4 py-2.5 text-xs text-white focus:outline-none focus:border-pink-400 transition">
+                </div>
+                <select id="departmentFilter" onchange="filterStaff()" class="bg-kawaii-bg border border-kawaii-border rounded-2xl px-4 py-2.5 text-xs text-kawaii-lavender focus:outline-none focus:border-pink-400 transition">
+                    <option value="all">All Departments 🌸</option>
+                    <option value="leadership">Leadership 👑</option>
+                    <option value="moderation">Moderation 🛡️</option>
+                    <option value="open">Open Positions ✨</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Staff Cards Grid -->
+        <div id="roles-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+
+            <!-- Server Owner: Angela -->
+            <div class="staff-card bg-kawaii-card/95 border-2 border-kawaii-border rounded-3xl p-5 relative overflow-hidden kawaii-glow kawaii-glow-hover transition-all duration-300 flex flex-col justify-between" data-department="leadership" data-name="angela ttuemh4r server owner">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-[10px] font-bold px-3 py-1 rounded-xl bg-pink-500/20 text-pink-300 border border-pink-500/40 tracking-wider uppercase">
+                            LEADERSHIP 👑
+                        </span>
+                        <span class="text-xs font-semibold px-2.5 py-1 rounded-xl bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 flex items-center gap-1">
+                            <i class="fa-solid fa-circle text-[7px] animate-pulse"></i> ASSIGNED
+                        </span>
+                    </div>
+                    <div class="flex items-center gap-3.5 mb-4">
+                        <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-pink-600 to-purple-500 flex items-center justify-center text-white text-xl font-bold shadow-md">
+                            <i class="fa-solid fa-crown text-yellow-200"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-white text-base">SERVER OWNER</h3>
+                            <p class="text-pink-300 font-semibold text-sm">Angela</p>
+                        </div>
+                    </div>
+                    <div class="space-y-2 text-xs text-kawaii-lavender/95 mb-4 bg-kawaii-bg/80 p-3.5 rounded-2xl border border-kawaii-border">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-brands fa-discord text-pink-400"></i>
+                            <span class="font-mono text-white font-medium">@ttvemh4r</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-sparkles text-pink-400"></i>
+                            <span>Wickivy Core Command</span>
+                        </div>
+                    </div>
+                </div>
+                <button onclick="openStaffDetails('Server Owner', 'Angela', '@ttvemh4r', 'Ultimate server direction, ownership, and heart of the Wickivy realm.')" class="w-full bg-kawaii-bg hover:bg-kawaii-border border border-kawaii-border text-pink-300 hover:text-white py-2.5 rounded-2xl text-xs font-bold transition flex items-center justify-center gap-2 shadow-sm">
+                    View Directives <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                </button>
+            </div>
+
+            <!-- Admin: Layla -->
+            <div class="staff-card bg-kawaii-card/95 border-2 border-kawaii-border rounded-3xl p-5 relative overflow-hidden kawaii-glow kawaii-glow-hover transition-all duration-300 flex flex-col justify-between" data-department="leadership" data-name="layla rc9stayevil admin">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-[10px] font-bold px-3 py-1 rounded-xl bg-pink-500/20 text-pink-300 border border-pink-500/40 tracking-wider uppercase">
+                            LEADERSHIP 🎀
+                        </span>
+                        <span class="text-xs font-semibold px-2.5 py-1 rounded-xl bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 flex items-center gap-1">
+                            <i class="fa-solid fa-circle text-[7px] animate-pulse"></i> ASSIGNED
+                        </span>
+                    </div>
+                    <div class="flex items-center gap-3.5 mb-4">
+                        <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-purple-600 to-pink-500 flex items-center justify-center text-white text-xl font-bold shadow-md">
+                            <i class="fa-solid fa-shield-heart text-pink-200"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-white text-base">ADMINISTRATOR</h3>
+                            <p class="text-pink-300 font-semibold text-sm">Layla</p>
+                        </div>
+                    </div>
+                    <div class="space-y-2 text-xs text-kawaii-lavender/95 mb-4 bg-kawaii-bg/80 p-3.5 rounded-2xl border border-kawaii-border">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-brands fa-discord text-pink-400"></i>
+                            <span class="font-mono text-white font-medium">@rc9stayevil</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-sparkles text-pink-400"></i>
+                            <span>Admin Headquarters</span>
+                        </div>
+                    </div>
+                </div>
+                <button onclick="openStaffDetails('Administrator', 'Layla', '@rc9stayevil', 'Oversees daily operations, staff supervision, and policy execution with care.')" class="w-full bg-kawaii-bg hover:bg-kawaii-border border border-kawaii-border text-pink-300 hover:text-white py-2.5 rounded-2xl text-xs font-bold transition flex items-center justify-center gap-2 shadow-sm">
+                    View Directives <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                </button>
+            </div>
+
+            <!-- Head Mod: Cole -->
+            <div class="staff-card bg-kawaii-card/95 border-2 border-kawaii-border rounded-3xl p-5 relative overflow-hidden kawaii-glow kawaii-glow-hover transition-all duration-300 flex flex-col justify-between" data-department="moderation" data-name="cole ezysn head mod">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-[10px] font-bold px-3 py-1 rounded-xl bg-purple-500/20 text-purple-300 border border-purple-500/40 tracking-wider uppercase">
+                            MODERATION 🛡️
+                        </span>
+                        <span class="text-xs font-semibold px-2.5 py-1 rounded-xl bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 flex items-center gap-1">
+                            <i class="fa-solid fa-circle text-[7px] animate-pulse"></i> ASSIGNED
+                        </span>
+                    </div>
+                    <div class="flex items-center gap-3.5 mb-4">
+                        <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-purple-600 to-indigo-500 flex items-center justify-center text-white text-xl font-bold shadow-md">
+                            <i class="fa-solid fa-shield-cat text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-white text-base">HEAD MODERATOR</h3>
+                            <p class="text-purple-300 font-semibold text-sm">Cole</p>
+                        </div>
+                    </div>
+                    <div class="space-y-2 text-xs text-kawaii-lavender/95 mb-4 bg-kawaii-bg/80 p-3.5 rounded-2xl border border-kawaii-border">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-brands fa-discord text-purple-400"></i>
+                            <span class="font-mono text-white font-medium">@ezysn</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-sparkles text-purple-400"></i>
+                            <span>Moderation Command Center</span>
+                        </div>
+                    </div>
+                </div>
+                <button onclick="openStaffDetails('Head Moderator', 'Cole', '@ezysn', 'Manages active moderator team, staff training, and friendly rule enforcement.')" class="w-full bg-kawaii-bg hover:bg-kawaii-border border border-kawaii-border text-purple-300 hover:text-white py-2.5 rounded-2xl text-xs font-bold transition flex items-center justify-center gap-2 shadow-sm">
+                    View Directives <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                </button>
+            </div>
+
+            <!-- Senior Mod: Rio -->
+            <div class="staff-card bg-kawaii-card/95 border-2 border-kawaii-border rounded-3xl p-5 relative overflow-hidden kawaii-glow kawaii-glow-hover transition-all duration-300 flex flex-col justify-between" data-department="moderation" data-name="rio the_real_rio_76418 senior mod">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-[10px] font-bold px-3 py-1 rounded-xl bg-purple-500/20 text-purple-300 border border-purple-500/40 tracking-wider uppercase">
+                            MODERATION 🛡️
+                        </span>
+                        <span class="text-xs font-semibold px-2.5 py-1 rounded-xl bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 flex items-center gap-1">
+                            <i class="fa-solid fa-circle text-[7px] animate-pulse"></i> ASSIGNED
+                        </span>
+                    </div>
+                    <div class="flex items-center gap-3.5 mb-4">
+                        <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-indigo-600 to-purple-500 flex items-center justify-center text-white text-xl font-bold shadow-md">
+                            <i class="fa-solid fa-user-shield text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-white text-base">SENIOR MODERATOR</h3>
+                            <p class="text-purple-300 font-semibold text-sm">Rio</p>
+                        </div>
+                    </div>
+                    <div class="space-y-2 text-xs text-kawaii-lavender/95 mb-4 bg-kawaii-bg/80 p-3.5 rounded-2xl border border-kawaii-border">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-brands fa-discord text-purple-400"></i>
+                            <span class="font-mono text-white font-medium">@the_real_rio_76418</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-sparkles text-purple-400"></i>
+                            <span>Senior Mod Outpost</span>
+                        </div>
+                    </div>
+                </div>
+                <button onclick="openStaffDetails('Senior Moderator', 'Rio', '@the_real_rio_76418', 'Monitors cozy chat rooms, assists junior staff, and handles support tickets.')" class="w-full bg-kawaii-bg hover:bg-kawaii-border border border-kawaii-border text-purple-300 hover:text-white py-2.5 rounded-2xl text-xs font-bold transition flex items-center justify-center gap-2 shadow-sm">
+                    View Directives <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                </button>
+            </div>
+
+            <!-- Open Position 1 -->
+            <div class="staff-card bg-kawaii-card/95 border-2 border-dashed border-pink-500/40 rounded-3xl p-5 relative overflow-hidden kawaii-glow kawaii-glow-hover transition-all duration-300 flex flex-col justify-between" data-department="open" data-name="active staff trial moderator open">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-[10px] font-bold px-3 py-1 rounded-xl bg-pink-500/10 text-pink-300 border border-pink-500/30 tracking-wider uppercase">
+                            MODERATION ✨
+                        </span>
+                        <span class="text-xs font-semibold px-2.5 py-1 rounded-xl bg-pink-500/20 text-pink-300 border border-pink-500/30 flex items-center gap-1">
+                            <i class="fa-solid fa-star text-[8px] animate-spin"></i> VACANT
+                        </span>
+                    </div>
+                    <div class="flex items-center gap-3.5 mb-4">
+                        <div class="w-12 h-12 rounded-2xl bg-kawaii-bg border border-kawaii-border flex items-center justify-center text-pink-400 text-xl font-bold shadow-md">
+                            <i class="fa-solid fa-user-plus"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-white text-base">ACTIVE STAFF / MOD</h3>
+                            <p class="text-pink-400 font-semibold text-sm">Position #1</p>
+                        </div>
+                    </div>
+                    <div class="space-y-2 text-xs text-kawaii-lavender/95 mb-4 bg-kawaii-bg/80 p-3.5 rounded-2xl border border-kawaii-border">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-brands fa-discord text-pink-400"></i>
+                            <span class="font-mono text-pink-300 font-medium">@unassigned</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-sparkles text-pink-400"></i>
+                            <span>General Chat Patrol</span>
+                        </div>
+                    </div>
+                </div>
+                <button onclick="openApplicationModal()" class="w-full bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-400 hover:to-purple-400 text-white py-2.5 rounded-2xl text-xs font-bold transition flex items-center justify-center gap-2 shadow-md">
+                    <i class="fa-solid fa-heart"></i> Apply For Role
+                </button>
+            </div>
+
+            <!-- Open Position 2 -->
+            <div class="staff-card bg-kawaii-card/95 border-2 border-dashed border-pink-500/40 rounded-3xl p-5 relative overflow-hidden kawaii-glow kawaii-glow-hover transition-all duration-300 flex flex-col justify-between" data-department="open" data-name="active staff trial moderator open">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-[10px] font-bold px-3 py-1 rounded-xl bg-pink-500/10 text-pink-300 border border-pink-500/30 tracking-wider uppercase">
+                            MODERATION ✨
+                        </span>
+                        <span class="text-xs font-semibold px-2.5 py-1 rounded-xl bg-pink-500/20 text-pink-300 border border-pink-500/30 flex items-center gap-1">
+                            <i class="fa-solid fa-star text-[8px] animate-spin"></i> VACANT
+                        </span>
+                    </div>
+                    <div class="flex items-center gap-3.5 mb-4">
+                        <div class="w-12 h-12 rounded-2xl bg-kawaii-bg border border-kawaii-border flex items-center justify-center text-pink-400 text-xl font-bold shadow-md">
+                            <i class="fa-solid fa-user-plus"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-white text-base">ACTIVE STAFF / MOD</h3>
+                            <p class="text-pink-400 font-semibold text-sm">Position #2</p>
+                        </div>
+                    </div>
+                    <div class="space-y-2 text-xs text-kawaii-lavender/95 mb-4 bg-kawaii-bg/80 p-3.5 rounded-2xl border border-kawaii-border">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-brands fa-discord text-pink-400"></i>
+                            <span class="font-mono text-pink-300 font-medium">@unassigned</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-sparkles text-pink-400"></i>
+                            <span>Voice Channels & Support</span>
+                        </div>
+                    </div>
+                </div>
+                <button onclick="openApplicationModal()" class="w-full bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-400 hover:to-purple-400 text-white py-2.5 rounded-2xl text-xs font-bold transition flex items-center justify-center gap-2 shadow-md">
+                    <i class="fa-solid fa-heart"></i> Apply For Role
+                </button>
+            </div>
+
+            <!-- Open Position 3: Event Host -->
+            <div class="staff-card bg-kawaii-card/95 border-2 border-dashed border-purple-500/40 rounded-3xl p-5 relative overflow-hidden kawaii-glow kawaii-glow-hover transition-all duration-300 flex flex-col justify-between" data-department="open" data-name="event coordinator open">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-[10px] font-bold px-3 py-1 rounded-xl bg-purple-500/10 text-purple-300 border border-purple-500/30 tracking-wider uppercase">
+                            COMMUNITY 🌸
+                        </span>
+                        <span class="text-xs font-semibold px-2.5 py-1 rounded-xl bg-purple-500/20 text-purple-300 border border-purple-500/30 flex items-center gap-1">
+                            <i class="fa-solid fa-star text-[8px] animate-spin"></i> VACANT
+                        </span>
+                    </div>
+                    <div class="flex items-center gap-3.5 mb-4">
+                        <div class="w-12 h-12 rounded-2xl bg-kawaii-bg border border-kawaii-border flex items-center justify-center text-purple-400 text-xl font-bold shadow-md">
+                            <i class="fa-solid fa-calendar-star"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-white text-base">EVENT HOST</h3>
+                            <p class="text-purple-300 font-semibold text-sm">Open Position</p>
+                        </div>
+                    </div>
+                    <div class="space-y-2 text-xs text-kawaii-lavender/95 mb-4 bg-kawaii-bg/80 p-3.5 rounded-2xl border border-kawaii-border">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-brands fa-discord text-purple-400"></i>
+                            <span class="font-mono text-purple-300 font-medium">@unassigned</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-sparkles text-purple-400"></i>
+                            <span>Events & Giveaways</span>
+                        </div>
+                    </div>
+                </div>
+                <button onclick="openApplicationModal()" class="w-full bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-400 hover:to-purple-400 text-white py-2.5 rounded-2xl text-xs font-bold transition flex items-center justify-center gap-2 shadow-md">
+                    <i class="fa-solid fa-heart"></i> Apply For Role
+                </button>
+            </div>
+
+            <!-- Open Position 4: Ticket Support -->
+            <div class="staff-card bg-kawaii-card/95 border-2 border-dashed border-purple-500/40 rounded-3xl p-5 relative overflow-hidden kawaii-glow kawaii-glow-hover transition-all duration-300 flex flex-col justify-between" data-department="open" data-name="support helper open">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-[10px] font-bold px-3 py-1 rounded-xl bg-purple-500/10 text-purple-300 border border-purple-500/30 tracking-wider uppercase">
+                            SUPPORT 💖
+                        </span>
+                        <span class="text-xs font-semibold px-2.5 py-1 rounded-xl bg-purple-500/20 text-purple-300 border border-purple-500/30 flex items-center gap-1">
+                            <i class="fa-solid fa-star text-[8px] animate-spin"></i> VACANT
+                        </span>
+                    </div>
+                    <div class="flex items-center gap-3.5 mb-4">
+                        <div class="w-12 h-12 rounded-2xl bg-kawaii-bg border border-kawaii-border flex items-center justify-center text-purple-400 text-xl font-bold shadow-md">
+                            <i class="fa-solid fa-handshake-angle"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-white text-base">TICKET SUPPORT</h3>
+                            <p class="text-purple-300 font-semibold text-sm">Open Position</p>
+                        </div>
+                    </div>
+                    <div class="space-y-2 text-xs text-kawaii-lavender/95 mb-4 bg-kawaii-bg/80 p-3.5 rounded-2xl border border-kawaii-border">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-brands fa-discord text-purple-400"></i>
+                            <span class="font-mono text-purple-300 font-medium">@unassigned</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-sparkles text-purple-400"></i>
+                            <span>Support Ticket Desk</span>
+                        </div>
+                    </div>
+                </div>
+                <button onclick="openApplicationModal()" class="w-full bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-400 hover:to-purple-400 text-white py-2.5 rounded-2xl text-xs font-bold transition flex items-center justify-center gap-2 shadow-md">
+                    <i class="fa-solid fa-heart"></i> Apply For Role
+                </button>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Staff Details Modal -->
+    <div id="staffModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm hidden items-center justify-center p-4 z-50">
+        <div class="bg-kawaii-card border-2 border-kawaii-border rounded-3xl max-w-md w-full p-6 kawaii-glow relative">
+            <button onclick="closeStaffModal()" class="absolute top-4 right-4 text-pink-400 hover:text-white transition w-8 h-8 rounded-full bg-kawaii-bg flex items-center justify-center border border-kawaii-border">
+                <i class="fa-solid fa-xmark text-sm"></i>
+            </button>
+            <div class="flex items-center gap-3.5 mb-4">
+                <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-pink-500 to-purple-400 flex items-center justify-center text-white text-xl font-bold shadow-md">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                </div>
+                <div>
+                    <h3 id="modalRoleTitle" class="font-bold text-white text-lg">Role Name</h3>
+                    <p id="modalStaffName" class="text-pink-300 text-sm font-semibold">Staff Name</p>
+                </div>
+            </div>
+            <div class="bg-kawaii-bg border border-kawaii-border rounded-2xl p-4 mb-4 space-y-2.5 text-xs">
+                <div class="flex justify-between">
+                    <span class="text-kawaii-lavender/70">Discord Handle:</span>
+                    <span id="modalDiscord" class="text-white font-mono font-bold">@username</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-kawaii-lavender/70">Access Status:</span>
+                    <span class="text-emerald-400 font-bold">✨ Verified Staff</span>
+                </div>
+            </div>
+            <div class="mb-5">
+                <h4 class="text-xs font-bold text-pink-300 uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
+                    <i class="fa-solid fa-heart text-pink-400"></i> Primary Directives:
+                </h4>
+                <p id="modalDescription" class="text-xs text-kawaii-lavender/95 leading-relaxed bg-kawaii-bg/80 p-3.5 rounded-2xl border border-kawaii-border">Description goes here...</p>
+            </div>
+            <button onclick="closeStaffModal()" class="w-full bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-400 hover:to-purple-400 text-white py-3 rounded-2xl text-xs font-bold transition shadow-md">
+                Close Window 🌸
+            </button>
+        </div>
+    </div>
+
+    <!-- Application Modal -->
+    <div id="appModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm hidden items-center justify-center p-4 z-50">
+        <div class="bg-kawaii-card border-2 border-kawaii-border rounded-3xl max-w-lg w-full p-6 kawaii-glow relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeApplicationModal()" class="absolute top-4 right-4 text-pink-400 hover:text-white transition w-8 h-8 rounded-full bg-kawaii-bg flex items-center justify-center border border-kawaii-border">
+                <i class="fa-solid fa-xmark text-sm"></i>
+            </button>
+            <div class="flex items-center gap-3.5 mb-4">
+                <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-pink-500 to-purple-400 flex items-center justify-center text-white text-xl font-bold shadow-md">
+                    <i class="fa-solid fa-file-pen"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-white text-lg">Wickivy Staff Application 🎀</h3>
+                    <p class="text-pink-300 text-xs">Fill out this cozy form to join our mod team!</p>
+                </div>
+            </div>
+            <form onsubmit="submitApplication(event)" class="space-y-4 text-xs">
+                <div>
+                    <label class="block text-kawaii-lavender mb-1.5 font-bold">Discord Username & Tag 🌸:</label>
+                    <input type="text" required placeholder="e.g. @username or username#0000" class="w-full bg-kawaii-bg border border-kawaii-border rounded-2xl p-3 text-white focus:outline-none focus:border-pink-400 transition">
+                </div>
+                <div>
+                    <label class="block text-kawaii-lavender mb-1.5 font-bold">Age & Timezone ✨:</label>
+                    <input type="text" required placeholder="e.g. 17, EST" class="w-full bg-kawaii-bg border border-kawaii-border rounded-2xl p-3 text-white focus:outline-none focus:border-pink-400 transition">
+                </div>
+                <div>
+                    <label class="block text-kawaii-lavender mb-1.5 font-bold">Why do you want to join Wickivy Staff? 💖:</label>
+                    <textarea required rows="2" placeholder="Tell us why you'd be a lovely fit..." class="w-full bg-kawaii-bg border border-kawaii-border rounded-2xl p-3 text-white focus:outline-none focus:border-pink-400 transition"></textarea>
+                </div>
+                <div>
+                    <label class="block text-kawaii-lavender mb-1.5 font-bold">Previous Experience 🌟:</label>
+                    <textarea required rows="2" placeholder="List any past Discord servers or moderation experience..." class="w-full bg-kawaii-bg border border-kawaii-border rounded-2xl p-3 text-white focus:outline-none focus:border-pink-400 transition"></textarea>
+                </div>
+                <div>
+                    <label class="block text-kawaii-lavender mb-1.5 font-bold">Scenario: A user starts spamming and insulting others while no other staff are online. What is your exact action? 🛡️:</label>
+                    <textarea required rows="2" placeholder="Describe your step-by-step response..." class="w-full bg-kawaii-bg border border-kawaii-border rounded-2xl p-3 text-white focus:outline-none focus:border-pink-400 transition"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-400 hover:to-purple-400 text-white py-3.5 rounded-2xl font-bold transition shadow-lg flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-paper-plane"></i> Submit Application ✨
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Success Toast -->
+    <div id="toast" class="fixed bottom-6 right-6 bg-kawaii-card border-2 border-pink-500 text-white px-5 py-3.5 rounded-3xl shadow-2xl hidden items-center gap-3.5 z-50 kawaii-glow">
+        <div class="w-10 h-10 rounded-2xl bg-pink-500/20 text-pink-400 flex items-center justify-center text-lg border border-pink-500/30">
+            <i class="fa-solid fa-heart animate-bounce"></i>
+        </div>
+        <div>
+            <h4 class="font-bold text-xs text-white">Application Submitted Successfully! 🌸</h4>
+            <p class="text-[11px] text-kawaii-lavender">Our management team will review your application soon!</p>
+        </div>
+    </div>
+
+    <!-- JavaScript Interactivity -->
+    <script>
+        function openStaffDetails(role, name, discord, desc) {
+            document.getElementById('modalRoleTitle').innerText = role;
+            document.getElementById('modalStaffName').innerText = name;
+            document.getElementById('modalDiscord').innerText = discord;
+            document.getElementById('modalDescription').innerText = desc;
+            document.getElementById('staffModal').classList.remove('hidden');
+            document.getElementById('staffModal').classList.add('flex');
+        }
+
+        function closeStaffModal() {
+            document.getElementById('staffModal').classList.remove('flex');
+            document.getElementById('staffModal').classList.add('hidden');
+        }
+
+        function openApplicationModal() {
+            document.getElementById('appModal').classList.remove('hidden');
+            document.getElementById('appModal').classList.add('flex');
+        }
+
+        function closeApplicationModal() {
+            document.getElementById('appModal').classList.remove('flex');
+            document.getElementById('appModal').classList.add('hidden');
+        }
+
+        function submitApplication(e) {
+            e.preventDefault();
+            closeApplicationModal();
+            const toast = document.getElementById('toast');
+            toast.classList.remove('hidden');
+            toast.classList.add('flex');
+            setTimeout(() => {
+                toast.classList.remove('flex');
+                toast.classList.add('hidden');
+            }, 4500);
+        }
+
+        function filterStaff() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const dept = document.getElementById('departmentFilter').value;
+            const cards = document.querySelectorAll('.staff-card');
+
+            cards.forEach(card => {
+                const nameText = card.getAttribute('data-name');
+                const deptText = card.getAttribute('data-department');
+                
+                const matchesSearch = nameText.includes(query);
+                const matchesDept = (dept === 'all' || deptText === dept);
+
+                if (matchesSearch && matchesDept) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
